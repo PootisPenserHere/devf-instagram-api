@@ -1,0 +1,10 @@
+{
+  "name": "devf-instagram-api",
+  "version": "1.0.0",
+  "description": "A nodejs backend with graphql for devf culican",
+  "main": "index.js",
+  "repository": "https://github.com/PootisPenserHere/devf-instagram-api",
+  "author": "(Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@laziness.rocks>)",
+  "license": "BSB-3",
+  "private": false
+}
