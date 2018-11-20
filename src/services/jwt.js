@@ -38,4 +38,5 @@ async function issueNewToken(username, plaintextPassword){
     }
 }
 
+module.exports.signNewToken = signNewToken;
 module.exports.issueNewToken = issueNewToken;
