@@ -6,5 +6,9 @@
   "repository": "https://github.com/PootisPenserHere/devf-instagram-api",
   "author": "(Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@laziness.rocks>)",
   "license": "BSB-3",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "jsonwebtoken": "^8.4.0"
+  }
 }
