@@ -1,7 +1,7 @@
 language: node_js
 sudo: true
 node_js:
-- 8
+- 8.12
 install:
 - echo "Entering install stage ..."
 - cp .sample.env .env
