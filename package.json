@@ -5,10 +5,12 @@
   "main": "index.js",
   "repository": "https://github.com/PootisPenserHere/devf-instagram-api",
   "author": "(Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@laziness.rocks>)",
-  "license": "BSB-3",
+  "license": "BSD-3-Clause",
   "private": false,
   "dependencies": {
     "bcrypt": "^3.0.2",
-    "jsonwebtoken": "^8.4.0"
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.13",
+    "redis": "^2.8.0"
   }
 }

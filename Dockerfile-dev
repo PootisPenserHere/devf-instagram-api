@@ -1,0 +1,16 @@
+FROM node:8.12-alpine
+LABEL maintainer = "Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@laziness.rocks>"
+
+WORKDIR /usr/src/app
+COPY . .
+
+RUN apk add --no-cache python g++ make tzdata && \
+cp /usr/share/zoneinfo/America/Mazatlan /etc/localtime && \
+echo "America/Mazatlan" > /etc/timezone && \
+yarn install --production=true && \
+yarn global add nodemon && \
+apk del tzdata g++ make python
+
+EXPOSE 3000
+
+CMD ["nodemon", "index.js"]
