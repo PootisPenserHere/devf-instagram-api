@@ -4,6 +4,7 @@ node_js:
 - 8
 install:
 - echo "Entering install stage ..."
+- cp .sample.env .env
 - sudo docker-compose -f docker-compose-ci.yml up --build -d
 script:
 - echo "Entering execution stage ..."
