@@ -15,9 +15,19 @@ services:
     - .env
     depends_on:
     - redis
+    - mongo
   redis:
     container_name: instagram_api_redis
     image: redis:5-alpine
     command: redis-server --requirepass 12345678
     ports:
     - "6379:6379"
+  mongo:
+    image: mongo:4.0.4
+    restart: always
+    command: mongod --port 27017 --bind_ip_all
+    ports:
+    - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sloth
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
