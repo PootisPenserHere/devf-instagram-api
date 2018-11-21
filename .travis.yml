@@ -10,6 +10,7 @@ services:
 
 install:
 - echo Entering install stage ...
+- echo $DOCKER_USERNAME
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - cp .sample.env .env
 
