@@ -14,13 +14,13 @@ async function test(){
 
     console.log(token);
 
-    await setKey("testKey", "la cosa");
+    await setKey("testKey", "Test redis key");
     console.log(await getKey("testKey"));
 
-    const testCollectio  = mongoConnection.model('cosa', { name: String });
+    const testCollection  = mongoConnection.model('cosa', { name: String });
 
-    const laCosa = new testCollectio({ name: 'la cosa' });
-    laCosa.save().then(() => console.log('algo'));
+    const laCosa = new testCollection({ name: 'la cosa' });
+    laCosa.save().then(() => console.log('Successfully saved document to mongo'));
 
 }
 

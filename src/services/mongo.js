@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongo:27017',{ useNewUrlParser: true, user: 'sloth', pass: '12345678', dbName: 'la-cosa' } );
+mongoose.connect('mongodb://mongo:27017',{
+    useNewUrlParser: true,
+    user: process.env.MONGO_USER,
+    pass: process.env.MONGO_PASSWORD,
+    dbName: process.env.MONGO_DATABASE } );
 
 const mongoConnection = mongoose.connection;
 
 mongoConnection.on('error',
-    (error) =>  console.log("Failed to connect to mongo",error))
+    (err) =>  console.log("Failed to connect to mongo", err))
     .once('open', () => console.log("Connected to database"));
 
 
