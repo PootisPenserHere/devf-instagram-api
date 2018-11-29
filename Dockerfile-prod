@@ -4,11 +4,11 @@ LABEL maintainer = "Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@lazi
 WORKDIR /usr/src/app
 COPY . .
 
-RUN apk add --no-cache python g++ make tzdata && \
+RUN apk add --no-cache --virtual .build-deps python g++ make tzdata && \
 cp /usr/share/zoneinfo/America/Mazatlan /etc/localtime && \
 echo "America/Mazatlan" > /etc/timezone && \
 yarn install --production=true && \
-apk del tzdata g++ make python
+apk del .build-deps
 
 EXPOSE 3000
 
