@@ -16,7 +16,7 @@ install:
 
 script:
 - echo Entering execution stage ...
-- sudo docker build -t $REPOSITORY_URI:latest -f Dockerfile-ci .
+- sudo docker build -t $REPOSITORY_URI:latest -f Dockerfile-prod .
 - sudo docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$SHORT_COMMIT_HASH
 - echo Pushing the Docker images ...
 - sudo docker push $REPOSITORY_URI:latest
