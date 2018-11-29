@@ -16,6 +16,7 @@ services:
     depends_on:
     - redis
     - mongo
+    command: "./docker/wait-for-mongo.sh"
   redis:
     container_name: instagram_redis
     image: redis:5-alpine
