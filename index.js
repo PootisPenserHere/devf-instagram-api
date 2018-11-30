@@ -2,26 +2,26 @@ const { signNewToken } = require("./src/services/jwt");
 const { setKey, getKey } = require("./src/services/redis");
 const { mongoConnection } = require("./src/services/mongo");
 
-console.log("Hello world");
+const {GraphQLServer} = require('graphql-yoga');
+const Query = require('./src/resolvers/Query');
+const resolvers = {
 
-async function test(){
-    let payload = {
-        "gretting": "hello",
-        "subject": "world"
-    };
+    Query
+};
 
-    let token = await signNewToken(payload);
+const server = new GraphQLServer({
+    typeDefs: './src/schema.graphql',
+    resolvers,
+    context: req => ({
+        ...req
+    })
+});
 
-    console.log(token);
+const options = {
+    port: 3000,
+    endpoint: '/graphql',
+    playground: '/playground'
+};
 
-    await setKey("testKey", "Test redis key");
-    console.log(await getKey("testKey"));
-
-    const testCollection  = mongoConnection.model('cosa', { name: String });
-
-    const laCosa = new testCollection({ name: 'la cosa' });
-    laCosa.save().then(() => console.log('Successfully saved document to mongo'));
-
-}
-
-test();
+server.start(options,
+    ({port}) => console.log(`Magic start in port ${port}`));
