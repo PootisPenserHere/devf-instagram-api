@@ -1,5 +1,4 @@
 #!/bin/sh
-# wait-for-postgres.sh
 
 set -e
 
@@ -10,11 +9,11 @@ cmd="$@"
 apk add --no-cache --virtual .wait-for-it mongodb
 
 until mongo --host "$host:27017"; do
-  >&2 echo "Postgres is unavailable - sleeping"
+  >&2 echo "Mongo is unavailable - sleeping"
   sleep 1
 done
 
->&2 echo "Postgres is up - executing command"
+>&2 echo "Mongo is up - executing command"
 
 apk del .wait-for-it
 
