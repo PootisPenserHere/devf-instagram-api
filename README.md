@@ -48,3 +48,22 @@ Alternatively both commands may be chained should a problem arise with the conta
 ```bash
 docker-compose down -v && docker-compose up --build -d
 ```
+
+
+```
+mutation{
+  signup(
+    data: {
+      first_name: "Pablo",
+      last_name: "Aramburo",
+      email: "Some@email.com",
+      password: "yhi",
+      birth_date: "2018/06/06",
+      gender: Male
+      nationality: "Mexicano"
+    }
+  ){
+    token
+  }
+}
+```

@@ -4,9 +4,12 @@ const { mongoConnection } = require("./src/services/mongo");
 
 const {GraphQLServer} = require('graphql-yoga');
 const Query = require('./src/resolvers/Query');
+const Mutation = require('./src/resolvers/Mutation');
+
 const resolvers = {
 
-    Query
+    Query,
+    Mutation
 };
 
 const server = new GraphQLServer({

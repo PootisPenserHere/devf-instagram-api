@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A nodejs backend with graphql for devf culican",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js"
+  },
   "repository": "https://github.com/PootisPenserHere/devf-instagram-api",
   "author": "(Jose Pablo Domingo Aramburo Sanchez <josepablo.aramburo@laziness.rocks>)",
   "license": "BSD-3-Clause",
