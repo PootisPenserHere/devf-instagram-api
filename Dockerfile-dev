@@ -11,6 +11,4 @@ yarn install --production=true && \
 yarn global add nodemon && \
 apk del .build-deps
 
-EXPOSE 3000
-
 CMD ["nodemon", "index.js"]

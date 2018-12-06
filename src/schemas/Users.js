@@ -1,10 +1,10 @@
 const mongoose =  require('mongoose');
 const bcrypt = require('bcrypt');
 
-const SALT_WORK_FACTOR = 10;
+const SALT_WORK_FACTOR = 10
 
 
-const Schema =  mongoose.Schema;
+const Schema =  mongoose.Schema
 
 const UserSchema = new Schema({
 
@@ -72,14 +72,8 @@ UserSchema.pre('save',function(next){
             next();
         })
     })
-});
 
-UserSchema.methods.comparePassword = function (candidate,cb) {
-    console.log(this.password)
-    bcrypt.compare(candidate,this.password,function(err,isMatch){
-        cb(err,isMatch)
-    })
 
-};
+})
 
 module.exports = mongoose.model('users',UserSchema);

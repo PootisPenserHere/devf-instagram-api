@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile-dev
     ports:
-    - "10000:3000"
+    - "8000:8000"
     volumes:
     - .:/usr/src/app
     - /usr/src/app/node_modules
@@ -30,8 +30,6 @@ services:
     command: mongod --port 27017 --bind_ip_all
     ports:
     - "27017:27017"
-    volumes:
-    - /root/instagram/mongo-data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: sloth
       MONGO_INITDB_ROOT_PASSWORD: 12345678
@@ -46,5 +44,3 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: 12345678
     depends_on:
     - mongo
-volumes:
-  mongo-data:
