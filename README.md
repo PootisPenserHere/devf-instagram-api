@@ -5,6 +5,9 @@
     1. [Docker](#Docker)
     1. [Docker-compose](#Docker-compose)
 2. [Development environment](#Preparing-the-development-environment)
+3. [Playground](#Playground)
+    1. [Queries](#Queries)
+    2. [Mutations](#Mutations)
 
 ## Pre requisites
 ### Docker
@@ -49,8 +52,20 @@ Alternatively both commands may be chained should a problem arise with the conta
 docker-compose down -v && docker-compose up --build -d
 ```
 
+## Playground
+### Queries
 
+Test
+```graphql
+query{
+  prueba
+}
 ```
+
+### Mutations
+
+Sing up
+```graphql
 mutation{
   signup(
     data: {
