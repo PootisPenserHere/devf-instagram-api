@@ -1,4 +1,3 @@
-//const { signNewToken } = require("./src/services/jwt");
 const { mongoConnection } = require("./src/services/mongo");
 
 const {GraphQLServer} = require('graphql-yoga');

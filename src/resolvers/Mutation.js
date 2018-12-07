@@ -1,23 +1,16 @@
 const Users =  require('../schemas/Users');
-const jwt =  require('jsonwebtoken');
+const { signNewToken } = require("../services/jwt");
 
-const SECRET = "mysecret";
+async function signup(_,args,context,info){
+    return Users.create(args.data).then(async (user) => {
 
-
-function signup(_,args,context,info){
-
-
-    return Users.create(args.data).then((user) => {
-
-        let payload =  {email:user.email};
-        let token = jwt.sign(payload,SECRET);
+        let payload = {email: user.email};
+        let token = await signNewToken(payload);
         return {token}
 
     }).catch((err) => {
         throw  new Error(err)
     })
-
-
 }
 
 module.exports = {
