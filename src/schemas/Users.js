@@ -1,13 +1,9 @@
 const mongoose =  require('mongoose');
-const bcrypt = require('bcrypt');
+const { hashPassword } = require("../services/crypto");
 
-const SALT_WORK_FACTOR = 10
-
-
-const Schema =  mongoose.Schema
+const Schema =  mongoose.Schema;
 
 const UserSchema = new Schema({
-
     first_name:{
         type:String,
         required:true
@@ -35,45 +31,27 @@ const UserSchema = new Schema({
     nationality:{
         type:String
     },
-    user_payment:{type:String},
-    subscription_id:{
-        type:Schema.Types.ObjectId,
-        ref:"subscriptions"
-    },
-    history:[
-        {
-            type:Schema.Types.ObjectId,
-            ref:'movies'
-        }
-    ],
-    favorites:[
-        {
-            type:Schema.Types.ObjectId,
-            ref:'movies'
-        }
-    ],
     is_active:{
         type:Boolean,
         default:true
     }
 
-},{'collection':'users','timestamps':true})
+},{'collection':'users','timestamps':true});
 
-UserSchema.pre('save',function(next){
-    let user = this
-    if(!user.isModified('password')){return next();}
+UserSchema.pre('save', async function(next){
+    let user = this;
 
-    bcrypt.genSalt(SALT_WORK_FACTOR,function(err,salt){
-        if(err) return next(err)
+    if(!user.isModified('password')){
+        return next();
+    }
 
-        bcrypt.hash(user.password,salt,function(err,hash){
-            if (err) return next(err);
-            user.password =  hash;
-            next();
-        })
-    })
+    try {
+        user.password = await hashPassword(user.password);
 
-
-})
+        return next()
+    } catch(err){
+        return next(err)
+    }
+});
 
 module.exports = mongoose.model('users',UserSchema);

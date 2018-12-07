@@ -1,5 +1,4 @@
 //const { signNewToken } = require("./src/services/jwt");
-//const { setKey, getKey } = require("./src/services/redis");
 const { mongoConnection } = require("./src/services/mongo");
 
 const {GraphQLServer} = require('graphql-yoga');
