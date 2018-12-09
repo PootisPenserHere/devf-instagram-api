@@ -20,7 +20,15 @@ const server = new GraphQLServer({
 const options = {
     port:8000,
     endpoint:'/graphql',
-    playground:'/playground'
+    playground:'/playground',
+    cors:{
+        credentials:true,
+        "origin": "*",
+        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+        "preflightContinue": false,
+        "optionsSuccessStatus": 204,
+        "maxAge": 3600
+    }
 
 
 };
