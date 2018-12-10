@@ -51,7 +51,8 @@ async function userDataByEmail(email) {
 async function signin(email, plaintextPassword) {
     let userData = await userDataByEmail(email);
 
-    if(verifyHashedPassword(plaintextPassword, userData.password)) {
+    if(await verifyHashedPassword(plaintextPassword, userData.password)) {
+        console.log(userData);
         return issueToken(userData);
     } else {
         throw Error("Unable to find the user, verify that the username and password are correct.")
