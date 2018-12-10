@@ -82,3 +82,15 @@ mutation{
   }
 }
 ```
+
+Login
+```graphql
+mutation{
+  login(
+    email: "Some2@emaisl.com",
+    password: "yhi"
+  ){
+    token
+  }
+}
+```
