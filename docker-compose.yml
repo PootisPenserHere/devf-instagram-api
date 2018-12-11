@@ -44,3 +44,15 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: 12345678
     depends_on:
     - mongo
+  storage:
+    container_name: instagram_blob_storage
+    image: minio/minio:RELEASE.2018-12-06T01-27-43Z
+    restart: always
+    ports:
+    - "9000:9000"
+    volumes:
+    - ~/volumes/instagram/blob_storage:/data
+    environment:
+      MINIO_ACCESS_KEY: SuperSecretAccessKey123
+      MINIO_SECRET_KEY: S3cr3tKey123
+    command: server /data
