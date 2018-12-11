@@ -16,6 +16,7 @@
     "graphql": "^14.0.2",
     "graphql-yoga": "^1.16.7",
     "jsonwebtoken": "^8.4.0",
+    "minio": "^7.0.2",
     "mongoose": "^5.3.13",
     "redis": "^2.8.0"
   }

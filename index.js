@@ -1,4 +1,5 @@
 const { mongoConnection } = require("./src/services/mongo");
+const { presignedPost } = require("./src/services/blobStorage");
 
 const {GraphQLServer} = require('graphql-yoga');
 const Query = require('./src/resolvers/Query');
@@ -32,6 +33,8 @@ const options = {
 
 
 };
+
+presignedPost();
 
 server.start(options,
     ({port}) => console.log(`Magic start in port ${port}`));
