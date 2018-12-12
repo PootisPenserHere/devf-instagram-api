@@ -66,7 +66,7 @@ async function signin(email, plaintextPassword) {
  * @param request object - the context of the request
  * @returns object - contains the data from the user collection from the requesting user
  */
-async function verifyToken(request) {
+async function verifyToken({request}) {
     let Authorization = request.get('Authorization');
 
     if(Authorization){

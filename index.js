@@ -5,7 +5,9 @@ const {verifyToken} = require('./src/models/auth');
 
 const Query = require('./src/resolvers/Query');
 const Mutation = require('./src/resolvers/Mutation');
+const { importSchema } = require('graphql-import')
 const typeDefs = importSchema('./src/schema.graphql');
+const { makeExecutableSchema } = require('graphql-tools')
 
 const resolvers = {
     Query,
