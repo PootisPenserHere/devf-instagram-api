@@ -38,5 +38,22 @@ async function issueNewToken(username, plaintextPassword){
     }
 }
 
+/**
+ * Decrypts a json web token and returns its payload as an object
+ *
+ * @param token string
+ * @returns object
+ */
+async function verifyJwt(token) {
+    let payload = await jwt.verify(token, process.env.TOKEN_SECRET);
+
+    if(!payload) {
+        throw Error("The token is invalid, please login again.");
+    }
+
+    return payload;
+}
+
 module.exports.signNewToken = signNewToken;
 module.exports.issueNewToken = issueNewToken;
+module.exports.verifyJwt = verifyJwt;

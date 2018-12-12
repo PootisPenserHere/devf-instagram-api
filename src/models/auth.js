@@ -1,5 +1,5 @@
 const Users = require('../schemas/Users');
-const { signNewToken } = require("../services/jwt");
+const { signNewToken, verifyJwt } = require("../services/jwt");
 const { verifyHashedPassword } = require("../services/crypto");
 
 /**
@@ -59,4 +59,22 @@ async function signin(email, plaintextPassword) {
     }
 }
 
+/**
+ * A sort of middleware that will look for a jwt in the headers and if it's present it'll
+ * add the data of the user to the context object
+ *
+ * @param request object - the context of the request
+ * @returns object - contains the data from the user collection from the requesting user
+ */
+async function verifyToken(request) {
+    let Authorization = request.get('Authorization');
+
+    if(Authorization){
+        let token  =  Authorization.replace('JWT ','');
+        let payload = verifyJwt(token);
+        return   Users.findOne({_id:payload.id});
+    }
+}
+
 module.exports.signin = signin;
+module.exports.verifyToken = verifyToken;
