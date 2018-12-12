@@ -35,8 +35,13 @@ function createInstagramPost(_, args, context, info) {
     );
 }
 
+function findPostByUserId(_, args, context, info){
+    return {};
+}
+
 module.exports = {
     signup,
     login,
-    createInstagramPost
+    createInstagramPost,
+    findPostByUserId
 };

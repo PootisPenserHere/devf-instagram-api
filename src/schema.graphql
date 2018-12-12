@@ -1,5 +1,6 @@
 type Query {
     prueba:String!
+    postsByUser(id: ID): [PostOutput]
 }
 
 type Mutation{
@@ -29,37 +30,38 @@ type AuthToken {
 }
 
 type PostOutput {
-    _id: String
+    _id: ID,
     user_id: String,
     photo: String,
+    title: String,
+    message: String,
     likes: [LikeOutput],
     comments: [CommentOutput]
 }
 
 type LikeOutput {
-   user_id:String,
-   user_name:String
+   user_id:ID
 }
 type CommentOutput {
-   user_id:String,
+   user_id:ID,
    user_comment:String
 }
 
 
 input PostInput {
-    user_id: String!,
+    user_id: ID!,
     title: String!
     photo: String!,
+    message: String!,
     likes: [LikeInput],
     comments: [CommentInput]
 }
 
 input LikeInput {
-    user_id: String,
-    user_name: String
+    user_id: ID
 }
 
 input CommentInput {
-    user_id:String!,
-    user_comment:String!
+    user_id:ID!,
+    comment:String!
 }
