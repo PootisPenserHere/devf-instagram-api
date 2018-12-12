@@ -3,9 +3,9 @@ const { signin } = require("../models/auth");
 const InstagramPost  = require('../schemas/InstagramPosts');
 
 async function signup(_,args,context,info){
-    return Users.create(args.data).then(async (user) => {
+    return await Users.create(args.data).then(async (user) => {
         /*
-        Since the user has already been created we can re use the login method
+        Since the user has already been created we can reuse the login method
         and directly query the newly created user to issue their token alongside
         their sign up process
          */

@@ -53,7 +53,7 @@ async function signin(email, plaintextPassword) {
 
     if(await verifyHashedPassword(plaintextPassword, userData.password)) {
         console.log(userData);
-        return issueToken(userData);
+        return await issueToken(userData);
     } else {
         throw Error("Unable to find the user, verify that the username and password are correct.")
     }
