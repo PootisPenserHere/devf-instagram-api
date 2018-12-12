@@ -13,7 +13,7 @@ async function signNewToken(payload){
         'algorithm': 'HS512'
     };
 
-    return  jwt.sign(payload, process.env.TOKEN_SECRET, options);
+    return await jwt.sign(payload, process.env.TOKEN_SECRET, options);
 }
 
 /**
