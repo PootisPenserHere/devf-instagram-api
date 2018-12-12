@@ -1,19 +1,27 @@
-const { mongoConnection } = require("./src/services/mongo");
-
 const {GraphQLServer} = require('graphql-yoga');
+
+const { mongoConnection } = require("./src/services/mongo");
+const {verifyToken} = require('./src/models/auth');
+
 const Query = require('./src/resolvers/Query');
 const Mutation = require('./src/resolvers/Mutation');
+const typeDefs = importSchema('./src/schema.graphql');
 
 const resolvers = {
     Query,
     Mutation
 };
 
-const server = new GraphQLServer({
-    typeDefs:'./src/schema.graphql',
+const schema = makeExecutableSchema({
+    typeDefs,
     resolvers,
-    context: req => ({
-        ...req
+});
+
+const server = new GraphQLServer({
+    schema,
+    context: async context => ({
+        ...context,
+        user:await verifyToken(context)
     })
 });
 
