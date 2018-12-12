@@ -9,7 +9,7 @@ async function signup(_,args,context,info){
         and directly query the newly created user to issue their token alongside
         their sign up process
          */
-        let token = await signin(user.email,user.password);
+        let token = await signin(user.email, args.data.password);
         return {token}
 
     }).catch((err) => {
