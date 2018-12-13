@@ -7,7 +7,8 @@ type Mutation{
     signup(data:UserInput!):AuthToken,
     login(email:String!,password:String!):AuthToken,
     createInstagramPost(data: PostInput!): String,
-    findPostByUserId(user_id: Int!): [PostOutput]
+    findPostByUserId(user_id: Int!): [PostOutput],
+    saveLikedActionPost(postID:ID!, user_id:ID!): String
 }
 
 input UserInput {

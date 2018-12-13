@@ -35,8 +35,20 @@ function createInstagramPost(_, args, context, info) {
     );
 }
 
+function saveLikedActionPost(_,args,context,info){
+
+    // console.log("SAVE LIKE ACTION POST: args: ", args);
+
+    return InstagramPost.findOneAndUpdate({_id: args.postID}, {$set: {likes: {user_id:[args.user_id]}}}).then(
+        response => {
+            return response.toString();
+        }
+    );
+}
+
 module.exports = {
     signup,
     login,
-    createInstagramPost
+    createInstagramPost,
+    saveLikedActionPost
 };
