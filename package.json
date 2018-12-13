@@ -13,6 +13,7 @@
   "private": false,
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "dotenv": "^6.2.0",
     "graphql": "^14.0.2",
     "graphql-yoga": "^1.16.7",
     "jsonwebtoken": "^8.4.0",
