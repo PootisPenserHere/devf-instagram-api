@@ -4,8 +4,8 @@ function prueba(_, args, context, info) {
     return "Esto es una prueba en graphql";
 }
 
-function postsByUser(_,args,data,context) {
-    return InstagramPosts.find({ user_id: args.id }).then(
+function getAllPosts(_,args,data,context) {
+    return InstagramPosts.find({ is_active: true }).then(
         (response) => {
             return response;
         }
@@ -14,5 +14,5 @@ function postsByUser(_,args,data,context) {
 
 module.exports = {
     prueba,
-    postsByUser
+    getAllPosts
 };

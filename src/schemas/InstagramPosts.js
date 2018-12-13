@@ -37,7 +37,10 @@ const PostSchema =  new Schema({
                 type: String
             }
         }
-    ]
+    ],
+    is_active: {
+        type: Boolean
+    }
 },{'collection':'instagramposts', 'timestamps': true});
 
 mongoose.Types.ObjectId.prototype.valueOf = function() {

@@ -1,6 +1,6 @@
 type Query {
     prueba:String!
-    postsByUser(id: ID): [PostOutput]
+    getAllPosts: [PostOutput]
 }
 
 type Mutation{
@@ -36,7 +36,8 @@ type PostOutput {
     title: String,
     message: String,
     likes: [LikeOutput],
-    comments: [CommentOutput]
+    comments: [CommentOutput],
+    is_active: Boolean
 }
 
 type LikeOutput {
@@ -54,7 +55,8 @@ input PostInput {
     photo: String!,
     message: String!,
     likes: [LikeInput],
-    comments: [CommentInput]
+    comments: [CommentInput],
+    is_active: Boolean
 }
 
 input LikeInput {
