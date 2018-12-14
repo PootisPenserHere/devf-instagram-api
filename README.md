@@ -1,4 +1,4 @@
-# Devf instagram api
+# Devf instagram api [![Build Status](https://travis-ci.org/PootisPenserHere/devf-instagram-api.svg?branch=master)](https://travis-ci.org/PootisPenserHere/devf-instagram-api)
 
 ### Table of Contents
 1. [Preparing the environment](#Pre-requisites)
