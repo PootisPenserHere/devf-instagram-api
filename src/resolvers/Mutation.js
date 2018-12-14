@@ -23,6 +23,9 @@ async function login(_,args,context,info){
 }
 
 function createInstagramPost(_, args, context, info) {
+    if(!context.user) {
+        throw new Error("Authentication is required");
+    }
 
     return InstagramPost.create( args.data ).then(
         (response) => {
@@ -36,8 +39,9 @@ function createInstagramPost(_, args, context, info) {
 }
 
 function saveLikedActionPost(_,args,context,info){
-
-    // console.log("SAVE LIKE ACTION POST: args: ", args);
+    if(!context.user) {
+        throw new Error("Authentication is required");
+    }
 
     return InstagramPost.findOneAndUpdate({_id: args.postID}, {$set: {likes: {user_id:[args.user_id]}}}).then(
         response => {

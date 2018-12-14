@@ -5,6 +5,10 @@ function prueba(_, args, context, info) {
 }
 
 function getAllPosts(_,args,data,context) {
+    if(!context.user) {
+        throw new Error("Authentication is required");
+    }
+    
     return InstagramPosts.find({ is_active: true }).then(
         (response) => {
             return response;
