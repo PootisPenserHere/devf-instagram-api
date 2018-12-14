@@ -70,8 +70,11 @@ async function verifyToken({request}) {
 
     if(Authorization){
         let token  =  Authorization.replace('JWT ','');
-        let payload = verifyJwt(token);
-        return   Users.findOne({_id:payload.id});
+        let payload = await verifyJwt(token);
+        return Users.findById(payload.id).then((user) => {
+            console.log(user);
+            return user
+        })
     }
 }
 

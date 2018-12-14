@@ -24,7 +24,7 @@ const server = new GraphQLServer({
     schema,
     context: async context => ({
         ...context,
-        user:await verifyToken(context)
+        user: await verifyToken(context)
     })
 });
 

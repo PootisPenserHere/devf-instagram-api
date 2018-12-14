@@ -4,7 +4,7 @@ function prueba(_, args, context, info) {
     return "Esto es una prueba en graphql";
 }
 
-function getAllPosts(_,args,data,context) {
+function getAllPosts(_,args,context,info) {
     if(!context.user) {
         throw new Error("Authentication is required");
     }
