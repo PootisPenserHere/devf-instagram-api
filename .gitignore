@@ -62,5 +62,4 @@ typings/
 
 # Idea
 .idea/*
-docker-compose.yml
 package-lock.json
