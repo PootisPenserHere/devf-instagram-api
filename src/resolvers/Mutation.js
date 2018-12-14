@@ -37,11 +37,44 @@ function createInstagramPost(_, args, context, info) {
 
 function saveLikedActionPost(_,args,context,info){
 
-    // console.log("SAVE LIKE ACTION POST: args: ", args);
+    InstagramPost.findOne(
+        {
+            _id: args.postID
+        },
+        (err, res) => {
+            if(err) return err;
 
-    return InstagramPost.findOneAndUpdate({_id: args.postID}, {$set: {likes: {user_id:[args.user_id]}}}).then(
-        response => {
-            return response.toString();
+            return new Promise( (resolve, reject)=> {
+                try {
+                    for(const key of res.likes) {
+                        if(key.user_id == args.user_id)
+                            resolve(true);
+                    }
+                    resolve(false);
+                } catch (error) {
+                    throw new Error(error);
+                }
+            })
+            .then(itemFound => {
+
+                if( typeof itemFound === 'boolean' && itemFound == false) {    /**<----ITEM NOT FOUND INTO ARRAY */
+                    return InstagramPost.updateOne(
+                        {
+                            _id: args.postID
+                        },
+                        {
+                            $push: { likes: {'user_id': args.user_id} }
+                        },
+                        function(err, raw) {
+                            if(err) return 'Error al actualizar:' + err;
+                            return true;
+                        }
+                    );
+                }
+            })
+            .catch(err => {
+                console.log('ERROR: ', err);
+            });
         }
     );
 }
