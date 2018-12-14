@@ -71,7 +71,7 @@ mutation{
     data: {
       first_name: "Jose Pablo",
       last_name: "Aramburo",
-      email: "josepablo.aramburo@gmail.com",
+      email: "josepablo.aramburo@laziness.rocks",
       password: "12345678",
       birth_date: "1991/06/06",
       gender: Male
@@ -87,7 +87,7 @@ Login
 ```graphql
 mutation{
   login(
-    email: "josepablo.aramburo@gmail.com",
+    email: "josepablo.aramburo@laziness.rocks",
     password: "12345678"
   ){
     token
