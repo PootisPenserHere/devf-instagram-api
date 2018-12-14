@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const {GraphQLServer} = require('graphql-yoga');
 
 const { mongoConnection } = require("./src/services/mongo");
