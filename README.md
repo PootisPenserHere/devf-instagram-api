@@ -1,4 +1,6 @@
-# Devf instagram api
+# Devf instagram api [![Build Status](https://travis-ci.org/PootisPenserHere/devf-instagram-api.svg?branch=master)](https://travis-ci.org/PootisPenserHere/devf-instagram-api)
+
+This is the back-end for the dev.f batch one of Culiacan, its front-end can be found [here][frontend link] 
 
 ### Table of Contents
 1. [Preparing the environment](#Pre-requisites)
@@ -69,11 +71,11 @@ Sing up
 mutation{
   signup(
     data: {
-      first_name: "Pablo",
+      first_name: "Jose Pablo",
       last_name: "Aramburo",
-      email: "Some@email.com",
-      password: "yhi",
-      birth_date: "2018/06/06",
+      email: "josepablo.aramburo@laziness.rocks",
+      password: "12345678",
+      birth_date: "1991/06/06",
       gender: Male
       nationality: "Mexicano"
     }
@@ -87,10 +89,12 @@ Login
 ```graphql
 mutation{
   login(
-    email: "Some2@emaisl.com",
-    password: "yhi"
+    email: "josepablo.aramburo@laziness.rocks",
+    password: "12345678"
   ){
     token
   }
 }
 ```
+
+[frontend link]: <https://github.com/desarrollonetcardenas/dev-f-instagram-frontend>

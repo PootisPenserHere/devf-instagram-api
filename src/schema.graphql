@@ -1,10 +1,14 @@
 type Query {
     prueba:String!
+    getAllPosts: [PostOutput]
 }
 
 type Mutation{
     signup(data:UserInput!):AuthToken,
-    login(email:String!,password:String!):AuthToken
+    login(email:String!,password:String!):AuthToken,
+    createInstagramPost(data: PostInput!): String,
+    findPostByUserId(user_id: Int!): [PostOutput],
+    saveLikedActionPost(postID:ID!, user_id:ID!): String
 }
 
 input UserInput {
@@ -20,9 +24,47 @@ input UserInput {
 enum Gender {
     Male,
     Female
-
 }
 
 type AuthToken {
     token:String
+}
+
+type PostOutput {
+    _id: ID,
+    user_id: String,
+    photo: String,
+    title: String,
+    message: String,
+    likes: [LikeOutput],
+    comments: [CommentOutput],
+    is_active: Boolean
+}
+
+type LikeOutput {
+   user_id:ID
+}
+type CommentOutput {
+   user_id:ID,
+   user_comment:String
+}
+
+
+input PostInput {
+    user_id: ID!,
+    title: String!
+    photo: String!,
+    message: String!,
+    likes: [LikeInput],
+    comments: [CommentInput],
+    is_active: Boolean
+}
+
+input LikeInput {
+    user_id: ID
+}
+
+input CommentInput {
+    user_id:ID!,
+    comment:String!
 }

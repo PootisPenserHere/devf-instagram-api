@@ -30,6 +30,8 @@ services:
     command: mongod --port 27017 --bind_ip_all
     ports:
     - "27017:27017"
+    volumes:
+    - ~/instagram/mongo-data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: sloth
       MONGO_INITDB_ROOT_PASSWORD: 12345678
@@ -44,3 +46,5 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: 12345678
     depends_on:
     - mongo
+volumes:
+  mongo-data:

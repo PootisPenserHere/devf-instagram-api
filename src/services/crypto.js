@@ -32,7 +32,7 @@ async function hashPassword(plaintextPassword){
 async function verifyHashedPassword(plaintextPassword, hashedPassword){
     try {
         return await new Promise((resolve, reject) => {
-            bcrypt.compare(plaintextPassword, hashedPassword, function (err, res) {
+            return bcrypt.compare(plaintextPassword, hashedPassword, function (err, res) {
                 if (err) reject(err);
                 resolve(res)
             });
