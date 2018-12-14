@@ -69,11 +69,11 @@ Sing up
 mutation{
   signup(
     data: {
-      first_name: "Pablo",
+      first_name: "Jose Pablo",
       last_name: "Aramburo",
-      email: "Some@email.com",
-      password: "yhi",
-      birth_date: "2018/06/06",
+      email: "josepablo.aramburo@gmail.com",
+      password: "12345678",
+      birth_date: "1991/06/06",
       gender: Male
       nationality: "Mexicano"
     }
@@ -87,8 +87,8 @@ Login
 ```graphql
 mutation{
   login(
-    email: "Some2@emaisl.com",
-    password: "yhi"
+    email: "josepablo.aramburo@gmail.com",
+    password: "12345678"
   ){
     token
   }
